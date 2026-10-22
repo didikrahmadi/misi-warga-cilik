@@ -4,7 +4,7 @@ Taruh file di folder yang disebutkan, **dengan nama persis seperti di bawah**. J
 
 Semua aset bersifat **opsional**. Bila sebuah file belum ada, media tetap berjalan dengan pengganti bawaan (emoji, gambar kartun bawaan, dan bunyi buatan browser).
 
-**Tips format:** gambar PNG/WEBP berlatar transparan (tokoh, ikon) atau PNG/JPG 1920×1080 (latar). Suara MP3. Usahakan ukuran file kecil agar ringan dibuka di PID.
+**Tips format:** ilustrasi menggunakan WebP agar ringan; lambang daerah tetap PNG. Semua gambar dijaga di bawah 200 KB per file. Tokoh berlatar transparan. Latar disiapkan untuk tampilan layar lebar. Suara MP3.
 
 ## 1. Musik latar
 
@@ -31,29 +31,29 @@ Semua aset bersifat **opsional**. Bila sebuah file belum ada, media tetap berjal
 
 | File | Ukuran saran | Keterangan |
 |---|---|---|
-| `assets/img/logo.png` | ± 1100×380 | Judul media di layar pembuka |
-| `assets/img/latar/pembuka.png` | 1920×1080 | Latar layar pembuka |
-| `assets/img/latar/menu.png` | 1920×1080 | Latar menu utama |
-| `assets/img/latar/peta-misi.png` | 1920×1080 | Latar Peta Misi (jalan RT → Provinsi) |
-| `assets/img/menu-misi.png` | ± 700×320 | Ilustrasi tombol Misi Warga Cilik |
-| `assets/img/menu-jelajah.png` | ± 700×320 | Ilustrasi tombol Jelajah Nusantara |
-| `assets/img/tokoh/avatar-1.png` | ± 400×520 | Avatar murid pilihan 1 |
-| `assets/img/tokoh/avatar-2.png` | ± 400×520 | Avatar murid pilihan 2 |
-| `assets/img/tokoh/avatar-3.png` | ± 400×520 | Avatar murid pilihan 3 |
-| `assets/img/tokoh/avatar-4.png` | ± 400×520 | Avatar murid pilihan 4 |
-| `assets/img/tokoh/avatar-5.png` | ± 400×520 | Avatar murid pilihan 5 |
-| `assets/img/tokoh/avatar-6.png` | ± 400×520 | Avatar murid pilihan 6 |
+| `assets/img/logo.webp` | ± 1100×380 | Judul media di layar pembuka |
+| `assets/img/latar/pembuka.webp` | 1920×1080 | Latar layar pembuka |
+| `assets/img/latar/menu.webp` | 1920×1080 | Latar menu utama |
+| `assets/img/latar/peta-misi.webp` | 1920×1080 | Latar Peta Misi (jalan RT → Provinsi) |
+| `assets/img/menu-misi.webp` | ± 700×320 | Ilustrasi tombol Misi Warga Cilik |
+| `assets/img/menu-jelajah.webp` | ± 700×320 | Ilustrasi tombol Jelajah Nusantara |
+| `assets/img/tokoh/avatar-1.webp` | ± 400×520 | Avatar murid pilihan 1 |
+| `assets/img/tokoh/avatar-2.webp` | ± 400×520 | Avatar murid pilihan 2 |
+| `assets/img/tokoh/avatar-3.webp` | ± 400×520 | Avatar murid pilihan 3 |
+| `assets/img/tokoh/avatar-4.webp` | ± 400×520 | Avatar murid pilihan 4 |
+| `assets/img/tokoh/avatar-5.webp` | ± 400×520 | Avatar murid pilihan 5 |
+| `assets/img/tokoh/avatar-6.webp` | ± 400×520 | Avatar murid pilihan 6 |
 
 ## 4. Tokoh & latar tiap stasiun
 
 | Stasiun | Tokoh (± 420×600, transparan) | Latar (1920×1080) |
 |---|---|---|
-| 1. Rukun Tetangga (RT) (Pak Darto, Ketua RT) | `assets/img/tokoh/ketua-rt.png` | `assets/img/latar/rt.png` |
-| 2. Rukun Warga (RW) (Bu Sari, Ketua RW) | `assets/img/tokoh/ketua-rw.png` | `assets/img/latar/rw.png` |
-| 3. Desa / Kelurahan (Pak Hasan, Kepala Desa / Lurah) | `assets/img/tokoh/kepala-desa.png` | `assets/img/latar/desa.png` |
-| 4. Kecamatan (Pak Bayu, Camat) | `assets/img/tokoh/camat.png` | `assets/img/latar/kecamatan.png` |
-| 5. Kabupaten / Kota (Bu Ratna, Bupati / Wali Kota) | `assets/img/tokoh/bupati.png` | `assets/img/latar/kabupaten.png` |
-| 6. Provinsi (Pak Gubernur, Gubernur) | `assets/img/tokoh/gubernur.png` | `assets/img/latar/provinsi.png` |
+| 1. Rukun Tetangga (RT) (Pak Darto, Ketua RT) | `assets/img/tokoh/ketua-rt.webp` | `assets/img/latar/rt.webp` |
+| 2. Rukun Warga (RW) (Bu Sari, Ketua RW) | `assets/img/tokoh/ketua-rw.webp` | `assets/img/latar/rw.webp` |
+| 3. Desa / Kelurahan (Pak Hasan, Kepala Desa / Lurah) | `assets/img/tokoh/kepala-desa.webp` | `assets/img/latar/desa.webp` |
+| 4. Kecamatan (Pak Bayu, Camat) | `assets/img/tokoh/camat.webp` | `assets/img/latar/kecamatan.webp` |
+| 5. Kabupaten / Kota (Bu Ratna, Bupati / Wali Kota) | `assets/img/tokoh/bupati.webp` | `assets/img/latar/kabupaten.webp` |
+| 6. Provinsi (Pak Gubernur, Gubernur) | `assets/img/tokoh/gubernur.webp` | `assets/img/latar/provinsi.webp` |
 
 ## 5. Lambang daerah (sudah terisi)
 
@@ -138,3 +138,123 @@ Format nama: `assets/audio/narasi/<kode>.mp3`. Tombol 🔊 otomatis muncul bila 
 | `prov-t1` | Semua provinsi bersatu dalam Negara Kesatuan Republik Indonesia. Siapa yang memimpin negara kita? |
 
 > Teks berisi {nama} / {provinsi} akan diganti otomatis di layar; pada rekaman suara, sebaiknya gunakan kalimat umum (mis. “Halo, Wartawan Cilik!”).
+
+## 8. Tombol & panel bergambar (opsional)
+
+Folder: `assets/img/ui/`. Gambar **tanpa tulisan**, WebP berlatar transparan, dilihat lurus dari depan.
+
+Media memotong gambar menjadi **9 bagian**: keempat sudut tidak melar, sisi dan tengah melebar mengikuti ukuran tombol. Jadi **satu gambar dipakai untuk tombol pendek maupun panjang**, dan tulisannya tetap diketik oleh media.
+
+```
+┌──────┬─────────────┬──────┐
+│ sudut│  sisi atas  │ sudut│  ← lebar "potong" (piksel di gambar asli)
+├──────┼─────────────┼──────┤
+│ sisi │   TENGAH    │ sisi │  ← tengah sebaiknya polos (warna/tekstur rata)
+├──────┼─────────────┼──────┤
+│ sudut│  sisi bawah │ sudut│
+└──────┴─────────────┴──────┘
+```
+
+Tips: buat sudut membulat ±60 px, letakkan hiasan (paku, serat kayu, kilap) di sudut atau tersebar rata, dan **buat bagian tengah polos**. Bila hasilnya kurang pas, ubah angka `potong` (lebar sudut di gambar asli) dan `sudut` (lebar sudut saat tampil) di `assets/js/config.js`. Untuk gambar yang pendek (mis. papan judul), `potong` sebaiknya **kurang dari setengah tinggi gambar**.
+
+| File | Ukuran saran | Dipakai untuk | Status |
+|---|---|---|---|
+| `assets/img/ui/tombol-kuning.webp` | 600×200 | Tombol utama (MULAI, Lanjut, Daftar) | ✅ ada |
+| `assets/img/ui/tombol-hijau.webp` | 600×200 | Tombol benar / selesai | ✅ ada |
+| `assets/img/ui/tombol-biru.webp` | 600×200 | Tombol biasa | ✅ ada |
+| `assets/img/ui/tombol-putih.webp` | 600×200 | Tombol sekunder (Menu, Kembali, pilihan) | ✅ ada |
+| `assets/img/ui/tombol-oranye.webp` | 600×200 | Tombol peringatan, Main Tim | ✅ ada |
+| `assets/img/ui/tombol-bulat.webp` | 200×200 | Tombol ikon bulat: musik, layar penuh, zoom (utuh, tidak dipotong) | ✅ ada |
+| `assets/img/ui/panel-kertas.webp` | 400×400 | Panel isi, kartu info, jendela | ✅ ada |
+| `assets/img/ui/papan-judul.webp` | 500×160 | Papan/pita judul di bilah atas | ✅ ada |
+| `assets/img/ui/kartu-pilihan.webp` | 300×300 | Kartu jawaban & kartu yang diseret | ✅ ada |
+| `assets/img/ui/balon-dialog.webp` | 400×400 | Balon percakapan tokoh | ✅ ada |
+
+## 9. Jelajah: Buku Atlas & Kartu Koleksi (opsional)
+
+Folder: `assets/img/jelajah/`. Bila `meja-atlas.webp` ada, layar provinsi berubah menjadi **buku atlas terbuka**: peta di halaman kiri, info provinsi di halaman kanan. Posisi kedua halaman diatur di `config.js` (`halamanKiri`, `halamanKanan` = [kiri, atas, lebar, tinggi] dalam piksel layar 1920×1080). Sesuaikan angkanya dengan gambar Bapak/Ibu.
+
+| File | Ukuran saran | Isi | Status |
+|---|---|---|---|
+| `assets/img/jelajah/meja-atlas.webp` | 1920×1080 | Meja kayu dengan buku atlas terbuka, kedua halaman kosong & terang | ✅ ada |
+| `assets/img/jelajah/laut.png` | 512×512 | Tekstur laut kartun yang bisa diulang (tepinya menyambung) | ✅ ada |
+| `assets/img/jelajah/kartu-provinsi.webp` | 400×400 | Halaman info provinsi (9 bagian, tengah polos) | ✅ ada |
+| `assets/img/jelajah/kartu-koleksi.webp` | 600×860 | Bingkai **kartu koleksi** kabupaten/kota; bagian dalam kosong & terang (lambang dan teks ditaruh media). Ditarik penuh, tidak dipotong | ✅ ada |
+| `assets/img/jelajah/pin-ibukota.webp` | 128×160 | Penanda ibu kota provinsi di peta (ujung lancip di bawah tengah) | ✅ ada |
+| `assets/img/jelajah/kompas.webp` | 300×300 | Hiasan mata angin di sudut peta | ✅ ada |
+
+## 10. Tokoh per jabatan
+
+Dipakai di dialog, pilihan teka-teki, Peta Misi (wajah dipotong otomatis dari bagian atas), dan Arena "Aku Siapa?" (siluet). Ukuran hasil kompresi ±400×600, seluruh badan, latar transparan, **kepala dekat bagian atas gambar** (seperti gambar yang sudah ada).
+
+| Jabatan | File | Status |
+|---|---|---|
+| Ketua RT | `assets/img/tokoh/ketua-rt.webp` | ✅ ada |
+| Ketua RW | `assets/img/tokoh/ketua-rw.webp` | ✅ ada |
+| Kepala Desa | `assets/img/tokoh/kepala-desa.webp` | ✅ ada |
+| Lurah | `assets/img/tokoh/lurah.webp` | ✅ ada |
+| Camat | `assets/img/tokoh/camat.webp` | ✅ ada |
+| Bupati | `assets/img/tokoh/bupati.webp` | ✅ ada |
+| Wali Kota | `assets/img/tokoh/wali-kota.webp` | ✅ ada |
+| Gubernur | `assets/img/tokoh/gubernur.webp` | ✅ ada |
+| Presiden | `assets/img/tokoh/presiden.webp` | ✅ ada |
+
+> Presiden: gunakan tokoh **umum**, bukan wajah presiden sungguhan.
+
+## 11. Gedung (aktivitas Kabupaten & Arena "Ke Mana?")
+
+| Kunci | File | Status |
+|---|---|---|
+| rt | `assets/img/latar/rt.webp` | ✅ ada |
+| rw | `assets/img/latar/rw.webp` | ✅ ada |
+| desa | `assets/img/latar/desa.webp` | ✅ ada |
+| kecamatan | `assets/img/latar/kecamatan.webp` | ✅ ada |
+| kabupaten | `assets/img/latar/kabupaten.webp` | ✅ ada |
+| provinsi | `assets/img/latar/provinsi.webp` | ✅ ada |
+| dprd | `assets/img/gedung/dprd.webp` | ✅ ada |
+| dinas-pendidikan | `assets/img/gedung/dinas-pendidikan.webp` | ✅ ada |
+| dinas-kesehatan | `assets/img/gedung/dinas-kesehatan.webp` | ✅ ada |
+| dinas-kependudukan | `assets/img/gedung/dinas-kependudukan.webp` | ✅ ada |
+| dinas-pu | `assets/img/gedung/dinas-pu.webp` | ✅ ada |
+
+## 12. Gambar situasi Arena "Ke Mana Aku Harus Pergi?"
+
+Ukuran saran 560×520 (dipotong rapi ke kotak). Diatur di `data-materi.js` (kunci `gambar`).
+
+| File | Situasi | Status |
+|---|---|---|
+| `assets/img/situasi/situasi-1.webp` | Keluarga Dina baru pindah rumah. Mereka ingin dicatat sebagai warga baru di lingkungannya. Ke mana mereka melapor pertama kali? | ✅ ada |
+| `assets/img/situasi/situasi-2.webp` | Warga satu RT ingin mengadakan kerja bakti membersihkan selokan. Siapa yang mengajak dan mengaturnya? | ✅ ada |
+| `assets/img/situasi/situasi-3.webp` | Pak Budi sudah mendapat surat pengantar dari RT dan RW. Ke mana ia pergi untuk mendapatkan surat keterangan? | ✅ ada |
+| `assets/img/situasi/situasi-4.webp` | Wakil dari beberapa desa dan kelurahan berkumpul untuk musyawarah perencanaan pembangunan. Di mana musyawarah itu diadakan? | ✅ ada |
+| `assets/img/situasi/situasi-5.webp` | Sebuah sekolah dasar membutuhkan perbaikan gedung. Pemerintah mana yang mengurus sekolah dasar? | ✅ ada |
+| `assets/img/situasi/situasi-6.webp` | Warga ingin membuat KTP elektronik dan Kartu Keluarga baru. Siapa yang mencetaknya? | ✅ ada |
+| `assets/img/situasi/situasi-7.webp` | Ada jalan provinsi yang menghubungkan beberapa kabupaten. Siapa yang merawatnya? | ✅ ada |
+| `assets/img/situasi/situasi-8.webp` | Pemerintah ingin memperbaiki SMA dan SMK negeri di beberapa kabupaten dan kota. Siapa yang mengurusnya? | ✅ ada |
+
+## 13. Ikon tombol (opsional)
+
+Folder: `assets/img/ikon/`, PNG transparan ±128×128, nama file = nama ikon + `.png` (mis. `musik.png`). Seluruh 59 ikon PNG sudah dibuat dan otomatis menggantikan ikon garis bawaan.
+
+`menu` · `kembali` · `lanjut` · `musik` · `musikMati` · `layarPenuh` · `buku` · `guru` · `atur` · `kunci` · `centang` · `bintang` · `bengkel` · `arena` · `latihan` · `refleksi` · `mik` · `peta` · `lup` · `tambah` · `kurang` · `ulang` · `tutup` · `simpan` · `cetak` · `suara` · `piala` · `daftar` · `target` · `pin` · `perisai` · `lampu` · `paspor` · `orang` · `kantor` · `rumah` · `tangga` · `kotakSuara` · `kota` · `sawah` · `kotak` · `sapu` · `surat` · `diskusi` · `sekolah` · `ktp` · `jalan` · `toga` · `rs` · `dprd` · `kerucut` · `pohon` · `tangan` · `bendera` · `senyum` · `biasa` · `bingung` · `tim` · `sendiri`
+
+## 14. Contoh perintah (prompt) pembuatan gambar
+
+- Tombol: *"Game UI button, cartoon 3D style, [warm yellow wooden plank / glossy candy yellow], rounded corners, plain flat center, decorations only on corners, no text, transparent background, front view"*
+- Panel kertas: *"Game UI panel, aged cream paper with soft brown border, rounded corners, plain empty center, cartoon style, no text, transparent background"*
+- Meja atlas: *"Open adventure atlas book on a wooden desk, top view, cartoon 3D style, warm lighting, both pages blank and light colored, no text, 16:9"*
+- Kartu koleksi: *"Collectible trading card frame, golden ornate border, empty light inner area, cartoon game style, no text, transparent background, portrait"*
+- Pin ibu kota: *"Red map pin marker with small star, cartoon 3D icon, transparent background"*
+
+## 15. Citra satelit peta (sudah terisi)
+
+Peta Jelajah Nusantara memakai citra satelit asli **NASA Blue Marble Next Generation** (topografi + batimetri laut, resolusi 500 m), dipotong mengikuti proyeksi peta media.
+
+| File | Isi |
+|---|---|
+| `assets/img/peta/indonesia.jpg` | Citra seluruh Indonesia (92,6°–143,1° BT, 10° LU–15° LS) |
+| `assets/img/peta/prov-<kode>.jpg` | Citra tiap provinsi (38 file), dimuat hanya saat provinsi dibuka |
+| `assets/data/peta/citra.js` | Posisi citra provinsi pada peta (jangan diubah) |
+
+Kepekatan warna provinsi di atas citra diatur di `config.js` (`citraWarna`). Untuk kembali ke peta warna polos, kosongkan `citraNasional` dan `citraProvinsi`.
+Sumber: NASA Earth Observatory (Reto Stöckli, NASA GSFC). Cantumkan sumber ini bila media disebarluaskan.

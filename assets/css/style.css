@@ -240,3 +240,67 @@ svg.ik { vertical-align: middle; flex: none; }
 .kartu-info .baris .ik { color: var(--biru); display: flex; justify-content: center; }
 .umpan .ik { display: flex; }
 .pilih .huruf svg { flex: none; }
+
+/* ===================== TAMPILAN BERGAMBAR (aktif bila file ada, lihat tampilan.js) =====================
+   Gambar 9-bagian dipasang pada lapisan ::before di belakang isi elemen. */
+.ada-tombolBiru .btn:not(.kuning):not(.hijau):not(.putih):not(.oranye) { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-tombolBiru .btn:not(.kuning):not(.hijau):not(.putih):not(.oranye)::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-tombolBiru); border-image: var(--img-tombolBiru) var(--potong-tombolBiru) fill / var(--sudut-tombolBiru) stretch; }
+.ada-tombolKuning .btn.kuning { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-tombolKuning .btn.kuning::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-tombolKuning); border-image: var(--img-tombolKuning) var(--potong-tombolKuning) fill / var(--sudut-tombolKuning) stretch; }
+.ada-tombolHijau .btn.hijau { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-tombolHijau .btn.hijau::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-tombolHijau); border-image: var(--img-tombolHijau) var(--potong-tombolHijau) fill / var(--sudut-tombolHijau) stretch; }
+.ada-tombolPutih .btn.putih { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-tombolPutih .btn.putih::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-tombolPutih); border-image: var(--img-tombolPutih) var(--potong-tombolPutih) fill / var(--sudut-tombolPutih) stretch; }
+.ada-tombolOranye .btn.oranye { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-tombolOranye .btn.oranye::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-tombolOranye); border-image: var(--img-tombolOranye) var(--potong-tombolOranye) fill / var(--sudut-tombolOranye) stretch; }
+[class*="ada-tombol"] .btn:not(.abs) { position: relative; }
+[class*="ada-tombol"] .btn { filter: drop-shadow(0 6px 0 rgba(0,0,0,.16)); }
+[class*="ada-tombol"] .btn:active { transform: translateY(5px); filter: drop-shadow(0 2px 0 rgba(0,0,0,.16)); }
+[class*="ada-tombol"] .btn.mati, [class*="ada-tombol"] .btn:disabled { filter: grayscale(1) opacity(.6); }
+.ada-tombolBulat .btn-ikon { background: var(--img-tombolBulat) center / 100% 100% no-repeat; box-shadow: none; filter: drop-shadow(0 5px 0 rgba(0,0,0,.15)); }
+.ada-panelKertas .panel, .ada-panelKertas .kartu-info, .ada-panelKertas .jendela { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-panelKertas .panel::before, .ada-panelKertas .kartu-info::before, .ada-panelKertas .jendela::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-panelKertas); border-image: var(--img-panelKertas) var(--potong-panelKertas) fill / var(--sudut-panelKertas) stretch; }
+.ada-panelKertas .kartu-info:not(.abs):not([style*="position:absolute"]), .ada-panelKertas .jendela { position: relative; }
+.ada-panelKertas .panel, .ada-panelKertas .kartu-info, .ada-panelKertas .jendela { filter: drop-shadow(0 10px 8px rgba(0,0,0,.16)); }
+.ada-papanJudul .bar .judul { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-papanJudul .bar .judul::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-papanJudul); border-image: var(--img-papanJudul) var(--potong-papanJudul) fill / var(--sudut-papanJudul) stretch; }
+.ada-papanJudul .bar .judul { position: relative; flex: 0 1 auto; margin: 0 auto; padding: 8px 70px 12px; }
+.ada-kartuPilihan .pilih:not(.benar):not(.salah):not(.terpilih), .ada-kartuPilihan .kartu:not(.benar) { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-kartuPilihan .pilih:not(.benar):not(.salah):not(.terpilih)::before, .ada-kartuPilihan .kartu:not(.benar)::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-kartuPilihan); border-image: var(--img-kartuPilihan) var(--potong-kartuPilihan) fill / var(--sudut-kartuPilihan) stretch; }
+.ada-kartuPilihan .pilih, .ada-kartuPilihan .kartu { filter: drop-shadow(0 6px 0 rgba(0,0,0,.12)); }
+.ada-kartuPilihan .kartu.angkat { filter: drop-shadow(0 20px 18px rgba(0,0,0,.3)); }
+.ada-balonDialog .balon { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-balonDialog .balon::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-balonDialog); border-image: var(--img-balonDialog) var(--potong-balonDialog) fill / var(--sudut-balonDialog) stretch; }
+.ada-balonDialog .balon { border-width: 0; } .ada-balonDialog .balon::after { display: none; }
+
+/* jelajah: laut, halaman provinsi */
+.ada-kartuProvinsi #kartu-prov { background: none; box-shadow: none; border-color: transparent; isolation: isolate; }
+.ada-kartuProvinsi #kartu-prov::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-style: solid; border-width: var(--sudut-kartuProvinsi); border-image: var(--img-kartuProvinsi) var(--potong-kartuProvinsi) fill / var(--sudut-kartuProvinsi) stretch; }
+
+.ada-laut .peta-wadah { background: var(--img-laut) repeat; background-size: 512px; }
+
+.atlas .peta-wadah { background-color: transparent; border-radius: 24px; }
+.atlas #kartu-prov { background: rgba(255,251,239,.0); border: 0; box-shadow: none; }
+
+/* kartu koleksi kabupaten/kota */
+.kartu-koleksi { position: absolute; z-index: 30; width: 580px; height: 860px; border-radius: 40px; padding: 34px 36px 30px;
+  background: linear-gradient(160deg, #FFE7A3, #F6C343 45%, #E9A21F); box-shadow: 0 0 0 8px #fff, 0 22px 40px rgba(0,0,0,.35);
+  display: flex; flex-direction: column; align-items: center; animation: balikKartu .55s cubic-bezier(.2,1.2,.4,1) both; transform-style: preserve-3d; }
+.kartu-koleksi .dalam { background: #FFFBEF; border-radius: 28px; width: 100%; flex: 1; padding: 22px 26px; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
+.ada-kartuKoleksi .kartu-koleksi { background: var(--img-kartuKoleksi) center / 100% 100% no-repeat; box-shadow: none; filter: drop-shadow(0 22px 24px rgba(0,0,0,.35)); }
+.ada-kartuKoleksi .kartu-koleksi .dalam { background: transparent; }
+.kartu-koleksi .pita { margin-top: -6px; background: var(--merah); color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 3px; padding: 6px 26px; border-radius: 10px; box-shadow: 0 4px 0 var(--merah-tua); }
+.kartu-koleksi h3 { margin: 14px 0 6px; font-size: 40px; text-align: center; line-height: 1.1; }
+.kartu-koleksi .baris { display: flex; gap: 12px; font-size: 25px; margin: 7px 0; align-items: flex-start; width: 100%; }
+.kartu-koleksi .baris .ik { color: var(--biru); flex: none; }
+@keyframes balikKartu { from { transform: perspective(1400px) rotateY(90deg) scale(.8); opacity: 0; } to { transform: perspective(1400px) rotateY(0) scale(1); opacity: 1; } }
+.hiasan-kompas { position: absolute; width: 170px; height: 170px; background: var(--img-kompas) center / contain no-repeat; pointer-events: none; z-index: 4; display: none; }
+.ada-kompas .hiasan-kompas { display: block; }
+
+/* ---------- peta citra satelit ---------- */
+.peta-wadah.citra { background: #0A2B5E; }
+.peta-wadah.citra path.wil { fill-opacity: var(--citra-warna, .28); stroke: rgba(255,255,255,.9); }
+.peta-wadah.citra path.wil.pilih { fill-opacity: .7; filter: drop-shadow(0 0 6px #fff); }
+.peta-wadah.citra path.wil.redup { opacity: 1; fill: #FF5A5F; fill-opacity: .6; }
+.peta-wadah image.citra-img { pointer-events: none; }
+.peta-wadah.citra path.wil.kota { fill-opacity: calc(var(--citra-warna, .28) * 2.2); }

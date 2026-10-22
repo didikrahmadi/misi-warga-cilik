@@ -81,6 +81,9 @@
     <button class="btn-ikon" data-z="reset" style="width:96px;height:96px">${I('ulang', 42, 2.6)}</button></div>`;
   function pasangZoom(r, gz) { $$('[data-z]', r).forEach(b => b.onclick = () => b.dataset.z === 'in' ? gz.zoom(1.5) : b.dataset.z === 'out' ? gz.zoom(1 / 1.5) : (Suara.efek('zoom'), gz.reset())); }
 
+  // citra satelit di bawah garis batas (kelas "citra" dipasang hanya bila gambarnya berhasil dimuat)
+  const citraSvg = (src, b) => src && b ? `<image class="citra-img" href="${src}" x="${b[0]}" y="${b[1]}" width="${b[2]}" height="${b[3]}" preserveAspectRatio="none" onload="this.closest('.peta-wadah').classList.add('citra')" onerror="this.remove()"/>` : '';
+  const warnaCitra = () => `--citra-warna:${(ASET.jelajah || {}).citraWarna ?? .28}`;
   const warnaProv = (kode, i) => { const p = PROVINSI[kode], pl = PULAU.find(x => x.id === p.pulau); return pl.warna[i % 3]; };
 
   /* ======================= PETA NUSANTARA ======================= */
@@ -98,7 +101,9 @@
     let h = '';
     P.prov.forEach((p, i) => { h += `<path class="wil" data-kode="${p.kode}" d="${p.d}" fill="${warnaProv(p.kode, i)}" stroke-width="1.5"/>`; });
     P.prov.forEach(p => { h += `<text x="${p.lx}" y="${p.ly}" class="lbl" data-for="${p.kode}">${PROVINSI[p.kode].nama}</text>`; });
-    svg.innerHTML = h;
+    const bt = (ASET.jelajah || {}).citraNasionalBatas || [P.ox, P.oy, P.ox + P.w / P.k, P.oy - P.h / P.k];
+    svg.innerHTML = citraSvg((ASET.jelajah || {}).citraNasional, [(bt[0] - P.ox) * P.k, (P.oy - bt[1]) * P.k, (bt[2] - bt[0]) * P.k, (bt[1] - bt[3]) * P.k]) + h;
+    $('#wadah', r).style.cssText += ';' + warnaCitra();
     const label = $$('text.lbl', svg);
     const gz = geserZoom(svg, [0, 0, P.w, P.h], {
       rasio: 1920 / 968,
@@ -148,35 +153,51 @@
   const isKota = nama => /^Kota /.test(nama);
 
   LAYAR.provinsi = (r, kode) => {
-    const p = A.infoProv(kode);
-    r.innerHTML = bar(`Provinsi ${p.nama}`, { ikon: 'peta', kembali: ['Peta Indonesia', 'nusantara'] }) + `
-      <div class="peta-wadah" id="wadah" style="${pos(0, 112, 1200, 860)}"><svg id="peta" xmlns="${NS}" preserveAspectRatio="xMidYMid meet"></svg>
+    const p = A.infoProv(kode), J = ASET.jelajah || {};
+    // Buku Atlas aktif bila gambar meja-atlas tersedia (posisi halaman diatur di config.js)
+    const atlas = !!(window.TAMPILAN && TAMPILAN.ada.mejaAtlas);
+    const [kx, ky, kw, kh] = atlas ? J.halamanKiri : [0, 112, 1200, 968];
+    const kartuPos = atlas ? J.halamanKanan : [1215, 128, 690, 935];
+    const mh = kh - 96;                       // tinggi peta (sisanya untuk keterangan)
+    r.classList.toggle('atlas', atlas);
+    r.innerHTML = (atlas ? `<div class="latar"><img class="lapis" src="${J.mejaAtlas}" alt=""></div>` : '') + bar(`Provinsi ${p.nama}`, { ikon: 'peta', kembali: ['Peta Indonesia', 'nusantara'] }) + `
+      <div class="peta-wadah" id="wadah" style="${pos(kx, ky, kw, mh)}"><svg id="peta" xmlns="${NS}" preserveAspectRatio="xMidYMid meet"></svg>
         <div class="abs" id="memuat" style="inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff">Memuat peta…</div></div>
-      ${tombolZoom(1080, 300)}
-      <div class="abs panel" style="${pos(24, 984, 1160, 80)};display:flex;align-items:center;gap:26px;padding:0 26px;font-size:26px;z-index:5;white-space:nowrap">
+      <div class="hiasan-kompas" style="left:${kx + 14}px;top:${ky + 10}px"></div>
+      ${tombolZoom(kx + kw - 116, ky + 150)}
+      <div class="abs panel" style="${pos(kx + 12, ky + kh - 86, kw - 24, 76)};display:flex;align-items:center;gap:22px;padding:0 24px;font-size:24px;z-index:5;white-space:nowrap;overflow:hidden">
         <span><span style="display:inline-block;width:30px;height:30px;border-radius:8px;background:${WARNA_KAB[0]};vertical-align:middle"></span> Kabupaten</span>
         <span><span style="display:inline-block;width:30px;height:30px;border-radius:8px;background:${WARNA_KOTA[0]};vertical-align:middle"></span> Kota</span>
-        <span><span class="bintang-teks">★</span> Ibu kota provinsi</span><span style="color:var(--abu);font-size:23px">Perbesar untuk melihat nama</span></div>
-      <div class="kartu-info" id="kartu-prov" style="${pos(1215, 128, 690, 935)}"></div>`;
+        <span>${pinKecil()} Ibu kota provinsi</span>${kw >= 1000 ? '<span style="color:var(--abu);font-size:21px">Perbesar untuk melihat nama</span>' : ''}</div>
+      <div class="kartu-info" id="kartu-prov" style="${pos(...kartuPos)}"></div>`;
+    r.dataset.kiri = JSON.stringify([kx, ky, kw, kh]);
     kartuProvinsi(r, p, 'ikon');
     muatKab(kode, data => {
       const svg = $('#peta', r); $('#memuat', r).remove();
       if (!data) { svg.parentNode.insertAdjacentHTML('beforeend', '<div class="abs" style="inset:0;display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff">Peta belum tersedia.</div>'); return; }
       let h = '', ik = 0, io = 0;
-      data.kab.forEach(k => { h += `<path class="wil" data-kode="${k.kode}" d="${k.d}" fill="${isKota(k.nama) ? WARNA_KOTA[io++ % 3] : WARNA_KAB[ik++ % 5]}" stroke-width="2"/>`; });
+      data.kab.forEach(k => { h += `<path class="wil${isKota(k.nama) ? ' kota' : ''}" data-kode="${k.kode}" d="${k.d}" fill="${isKota(k.nama) ? WARNA_KOTA[io++ % 3] : WARNA_KAB[ik++ % 5]}" stroke-width="2"/>`; });
       data.kab.forEach(k => { h += `<text class="lbl" x="${k.lx}" y="${k.ly}">${k.nama.replace(/^(Kabupaten|Kota)( Administrasi)? /, '')}</text>`; });
       const ib = data.kab.find(k => k.kode === p.kodeIbukota);
-      if (ib) { const cx = ib.cx != null ? ib.cx : ib.lx, cy = ib.cy != null ? ib.cy : ib.ly; h += `<text class="bintang" x="${cx}" y="${cy}" style="fill:#FFD400;stroke:#7A5A00;paint-order:stroke">★</text>`; }
-      svg.innerHTML = h;
-      const unit = Math.max(data.box[2] / 1200, data.box[3] / 860);
-      const label = $$('text.lbl', svg), bintang = $('text.bintang', svg);
+      const pinGambar = window.TAMPILAN && TAMPILAN.ada.pinIbukota;
+      let pcx = 0, pcy = 0;
+      if (ib) {
+        pcx = ib.cx != null ? ib.cx : ib.lx; pcy = ib.cy != null ? ib.cy : ib.ly;
+        h += pinGambar ? `<image class="bintang pin" href="${J.pinIbukota}" x="${pcx}" y="${pcy}"/>` : `<text class="bintang" x="${pcx}" y="${pcy}" style="fill:#FFD400;stroke:#7A5A00;paint-order:stroke">★</text>`;
+      }
+      const J2 = ASET.jelajah || {};
+      svg.innerHTML = citraSvg(J2.citraProvinsi && J2.citraProvinsi.replace('{kode}', kode), window.CITRA_PROV && CITRA_PROV[kode]) + h;
+      $('#wadah', r).style.cssText += ';' + warnaCitra();
+      const unit = Math.max(data.box[2] / kw, data.box[3] / mh);
+      const label = $$('text.lbl', svg), bintang = $('.bintang', svg);
       const banyak = data.kab.length;
       const gz = geserZoom(svg, data.box, {
-        rasio: 1200 / 860,
+        rasio: kw / mh,
         maks: 8,
         onZoom: z => {
           const fs = 19 * unit / z; label.forEach(t => { t.setAttribute('font-size', fs); t.setAttribute('stroke-width', fs / 5); t.style.opacity = (z >= 1.7 || banyak <= 8) ? 1 : 0; });
-          if (bintang) { bintang.setAttribute('font-size', 54 * unit / z); bintang.setAttribute('stroke-width', 6 * unit / z); bintang.setAttribute('dy', 18 * unit / z); }
+          if (bintang && pinGambar) { const w = 64 * unit / z, h = w * 1.25; bintang.setAttribute('width', w); bintang.setAttribute('height', h); bintang.setAttribute('x', pcx - w / 2); bintang.setAttribute('y', pcy - h); }
+          else if (bintang) { bintang.setAttribute('font-size', 54 * unit / z); bintang.setAttribute('stroke-width', 6 * unit / z); bintang.setAttribute('dy', 18 * unit / z); }
         },
         onTap: el => { if (!el) return; Suara.efek('pop'); $$('path.wil', svg).forEach(x => x.classList.toggle('pilih', x === el)); kartuKab(r, p, el.dataset.kode, () => $$('path.wil', svg).forEach(x => x.classList.remove('pilih'))); }
       });
@@ -210,32 +231,39 @@
     $$('[data-tab]', el).forEach(b => b.onclick = () => kartuProvinsi(r, p, b.dataset.tab));
     $('#b-daftar', el).onclick = () => {
       const t = jendela(`<h2>${I('daftar', 48)} Kabupaten & Kota di ${p.nama}</h2><div class="gulir" style="height:640px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-content:start;padding-right:14px">
-        ${p.daftar.map(([k, v]) => `<button class="btn putih kecil" data-k="${k}" style="font-size:23px;justify-content:flex-start;text-align:left;min-height:96px;padding:0 14px;border-left:14px solid ${isKota(v.nama) ? WARNA_KOTA[0] : WARNA_KAB[0]}">${logo(k, 'width:54px;height:62px')}${v.nama}${k === p.kodeIbukota ? ' <span class="bintang-teks">★</span>' : ''}</button>`).join('')}</div>
+        ${p.daftar.map(([k, v]) => `<button class="btn putih kecil" data-k="${k}" style="font-size:23px;justify-content:flex-start;text-align:left;min-height:96px;padding:0 14px;border-left:14px solid ${isKota(v.nama) ? WARNA_KOTA[0] : WARNA_KAB[0]}">${logo(k, 'width:54px;height:62px')}${v.nama}${k === p.kodeIbukota ? ' ' + pinKecil() : ''}</button>`).join('')}</div>
         <button class="btn kuning kecil abs" data-aksi="tutup" style="right:40px;top:34px">Tutup ${I('tutup', 30, 3)}</button>`, 1640);
       $$('[data-k]', t).forEach(b => b.onclick = () => { t.remove(); const path = $(`path[data-kode="${b.dataset.k}"]`, r); $$('path.wil', r).forEach(x => x.classList.toggle('pilih', x === path)); kartuKab(r, p, b.dataset.k, () => $$('path.wil', r).forEach(x => x.classList.remove('pilih'))); });
     };
   }
 
+  // penanda ibu kota kecil untuk keterangan & daftar
+  const pinKecil = () => (window.TAMPILAN && TAMPILAN.ada.pinIbukota) ? `<img src="${ASET.jelajah.pinIbukota}" alt="" style="height:30px;vertical-align:middle">` : '<span class="bintang-teks">★</span>';
+
+  // Kartu koleksi kabupaten/kota (bingkai: ASET.jelajah.kartuKoleksi)
   function kartuKab(r, p, kode, tutupCb) {
-    $$('.kartu-kab', r).forEach(e => e.remove());
+    $$('.kartu-koleksi', r).forEach(e => e.remove());
     const k = KABKOTA[kode]; if (!k) return;
     const kota = isKota(k.nama), adm = / Administrasi /.test(k.nama);
     const pemimpin = kota ? 'Wali Kota' : 'Bupati';
-    const baris = (ik, t) => t ? `<div class="baris"><span class="ik">${I(ik, 36, 2.2)}</span><span>${t}</span></div>` : '';
-    let pusat = k.ibukota || (kota ? k.nama.replace(/^Kota (Administrasi )?/, '') : '');
-    const el = document.createElement('div'); el.className = 'kartu-info kartu-kab';
-    el.style.cssText = pos(250, 170, 900, 760) + ';z-index:30;animation:muncul .25s';
-    el.innerHTML = `<div style="display:flex;gap:30px;align-items:center;margin-bottom:18px">${logo(kode, 'width:180px;height:200px')}
-        <div><span class="label-jenis" style="background:${kota ? '#F7882F' : '#3BAA5C'}">${kota ? 'KOTA' : 'KABUPATEN'}${adm ? ' ADMINISTRASI' : ''}</span>
-        <h3 style="margin-top:12px">${k.nama}</h3><div style="font-size:24px;color:var(--abu)">${I('perisai', 24)} Lambang ${k.nama}</div></div></div>
-      ${baris('orang', adm ? `Dipimpin oleh <b>${pemimpin}</b> yang <b>diangkat oleh Gubernur</b> DKI Jakarta` : `Dipimpin oleh <b>${pemimpin}</b> dan Wakil ${pemimpin}, dipilih rakyat melalui Pilkada`)}
-      ${baris('peta', `Berada di <b>Provinsi ${p.nama}</b>`)}
-      ${baris('kantor', pusat && `Pusat pemerintahan: <b>${pusat}</b>`)}
-      ${baris('bintang', kode === p.kodeIbukota && `Di sinilah <b>ibu kota Provinsi ${p.nama}</b> (${p.ibukota}) berada`)}
-      ${baris('lampu', k.ciri && `Ciri khas: ${k.ciri}`)}
-      <div style="position:absolute;left:40px;right:40px;bottom:30px;display:flex;gap:20px">
-        <button class="btn putih kecil" data-ke="bengkelItem" data-arg="kabkota">${I('ulang', 32)} Kabupaten atau Kota?</button>
-        <button class="btn kuning kecil" id="b-tutup" style="margin-left:auto;width:220px">Tutup ${I('tutup', 30, 3)}</button></div>`;
+    const baris = (ik, t) => t ? `<div class="baris"><span class="ik">${I(ik, 30, 2.2)}</span><span>${t}</span></div>` : '';
+    const pusat = k.ibukota || (kota ? k.nama.replace(/^Kota (Administrasi )?/, '') : '');
+    const [kx, , kw] = JSON.parse(r.dataset.kiri || '[0,112,1200,968]');
+    const el = document.createElement('div'); el.className = 'kartu-koleksi';
+    el.style.left = Math.max(20, kx + kw / 2 - 320) + 'px'; el.style.top = '150px';
+    el.innerHTML = `<div class="pita" style="background:${kota ? '#F7882F' : '#3BAA5C'};box-shadow:0 4px 0 ${kota ? '#C2620F' : '#25763D'}">${kota ? 'KOTA' : 'KABUPATEN'}${adm ? ' ADMINISTRASI' : ''}</div>
+      <div class="dalam">
+        ${logo(kode, 'width:190px;height:210px;margin-top:6px')}
+        <h3>${k.nama}</h3>
+        <div style="font-size:21px;color:var(--abu);margin-bottom:10px">${I('perisai', 22)} Lambang ${k.nama}</div>
+        ${baris('orang', adm ? `Dipimpin <b>${pemimpin}</b>, diangkat oleh Gubernur DKI Jakarta` : `Dipimpin <b>${pemimpin}</b> dan Wakil ${pemimpin}, dipilih melalui Pilkada`)}
+        ${baris('peta', `Provinsi <b>${p.nama}</b>`)}
+        ${baris('kantor', pusat && `Pusat pemerintahan: <b>${pusat}</b>`)}
+        ${baris('bintang', kode === p.kodeIbukota && `<b>Ibu kota provinsi</b> (${p.ibukota}) ada di sini`)}
+        ${baris('lampu', k.ciri && `Ciri khas: ${k.ciri}`)}
+        <button class="btn putih kecil" data-ke="bengkelItem" data-arg="kabkota" style="margin-top:auto;font-size:24px;min-height:70px">${I('ulang', 28)} Kabupaten atau Kota?</button>
+      </div>
+      <button class="btn-ikon" id="b-tutup" style="position:absolute;right:-22px;top:-22px;width:84px;height:84px;border-radius:50%">${I('tutup', 40, 3)}</button>`;
     r.appendChild(el);
     $('#b-tutup', el).onclick = () => { Suara.efek('klik'); el.remove(); tutupCb && tutupCb(); };
   }

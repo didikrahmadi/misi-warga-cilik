@@ -312,6 +312,7 @@
       • Bila PID dipakai bergantian kelas, gunakan <b>Reset progres</b> di Mode Guru sebelum kelas dimulai.<br>• Arena Teka-teki punya <b>Mode Tim</b> (Merah vs Biru) untuk dimainkan bersama satu kelas.</div>`],
     guru: ['kunci', 'Mode Guru', null],
     sumber: ['buku', 'Sumber & Lisensi', `<div style="font-size:27px;line-height:1.5"><b>Data batas wilayah:</b> fatih-ntf/indonesia-geojson (MIT), mengacu Kepmendagri No. 300.2.2-2430 Tahun 2025; batas Kota Banjar dari cahyadsn/wilayah_boundaries (MIT). Batas wilayah untuk tampilan pembelajaran, bukan rujukan hukum.<br>
+      <b>Citra satelit peta:</b> NASA Earth Observatory, <i>Blue Marble Next Generation</i> dengan topografi & batimetri (Agustus 2004), dipotong & disesuaikan warnanya untuk media ini.<br>
       <b>Lambang daerah:</b> berkas dari Wikimedia Commons / Wikipedia bahasa Indonesia (daftar sumber di <code>SUMBER-LAMBANG.csv</code>). Lambang dipakai apa adanya untuk tujuan pendidikan; mohon dicocokkan dengan lambang resmi terbaru.<br>
       <b>Huruf:</b> Fredoka (SIL Open Font License).<br><b>Data provinsi & kabupaten/kota:</b> disusun untuk media ini; mohon diperiksa guru. Isi dapat diubah di folder <code>assets/js/</code>.<br>
       <b>Gambar & suara:</b> daftar nama file ada di <code>assets/js/config.js</code> dan <code>DAFTAR-ASET.md</code>.</div>`]

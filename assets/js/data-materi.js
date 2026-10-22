@@ -16,7 +16,7 @@ window.MATERI = {
     {
       id: 'rt', no: 1, nama: 'Rukun Tetangga (RT)', singkat: 'RT',
       pemimpin: 'Ketua RT', sapaan: 'Pak Darto', emoji: '👨🏽', warna: '#FF8A3D',
-      gambarTokoh: 'assets/img/tokoh/ketua-rt.png', gambarLatar: 'assets/img/latar/rt.png',
+      gambarTokoh: 'assets/img/tokoh/ketua-rt.webp', gambarLatar: 'assets/img/latar/rt.webp',
       latar: 'rumah',
       dialog: [
         { kode: 'rt-1', teks: 'Halo, <b>{nama}</b>! Selamat datang di <b>RT 03</b>. Saya Pak Darto, <b>Ketua RT</b> di sini.' },
@@ -57,7 +57,7 @@ window.MATERI = {
     {
       id: 'rw', no: 2, nama: 'Rukun Warga (RW)', singkat: 'RW',
       pemimpin: 'Ketua RW', sapaan: 'Bu Sari', emoji: '👩🏽', warna: '#FFB627',
-      gambarTokoh: 'assets/img/tokoh/ketua-rw.png', gambarLatar: 'assets/img/latar/rw.png',
+      gambarTokoh: 'assets/img/tokoh/ketua-rw.webp', gambarLatar: 'assets/img/latar/rw.webp',
       latar: 'kampung',
       dialog: [
         { kode: 'rw-1', teks: 'Selamat datang, <b>{nama}</b>! Saya Bu Sari, <b>Ketua RW 05</b>.' },
@@ -92,7 +92,7 @@ window.MATERI = {
     {
       id: 'desa', no: 3, nama: 'Desa / Kelurahan', singkat: 'Desa/Kel',
       pemimpin: 'Kepala Desa / Lurah', sapaan: 'Pak Hasan', emoji: '👨🏽‍🌾', warna: '#2BB673',
-      gambarTokoh: 'assets/img/tokoh/kepala-desa.png', gambarLatar: 'assets/img/latar/desa.png',
+      gambarTokoh: 'assets/img/tokoh/kepala-desa.webp', gambarLatar: 'assets/img/latar/desa.webp',
       latar: 'desa',
       dialog: [
         { kode: 'desa-1', teks: 'Selamat datang di <b>Kantor Desa Sukamaju</b>, {nama}! Saya Pak Hasan, <b>Kepala Desa</b>.' },
@@ -127,7 +127,7 @@ window.MATERI = {
     {
       id: 'kec', no: 4, nama: 'Kecamatan', singkat: 'Kecamatan',
       pemimpin: 'Camat', sapaan: 'Pak Bayu', emoji: '👨🏽‍💼', warna: '#22C3C3',
-      gambarTokoh: 'assets/img/tokoh/camat.png', gambarLatar: 'assets/img/latar/kecamatan.png',
+      gambarTokoh: 'assets/img/tokoh/camat.webp', gambarLatar: 'assets/img/latar/kecamatan.webp',
       latar: 'kantor',
       dialog: [
         { kode: 'kec-1', teks: 'Halo, <b>{nama}</b>! Saya Pak Bayu, <b>Camat</b> di Kecamatan Melati.' },
@@ -160,7 +160,7 @@ window.MATERI = {
     {
       id: 'kab', no: 5, nama: 'Kabupaten / Kota', singkat: 'Kab/Kota',
       pemimpin: 'Bupati / Wali Kota', sapaan: 'Bu Ratna', emoji: '👩🏽‍💼', warna: '#2F6BFF',
-      gambarTokoh: 'assets/img/tokoh/bupati.png', gambarLatar: 'assets/img/latar/kabupaten.png',
+      gambarTokoh: 'assets/img/tokoh/bupati.webp', gambarLatar: 'assets/img/latar/kabupaten.webp',
       latar: 'kota',
       dialog: [
         { kode: 'kab-1', teks: 'Selamat datang di <b>Kabupaten Nusa Indah</b>, {nama}! Saya Bu Ratna, <b>Bupati</b> di sini.' },
@@ -200,7 +200,7 @@ window.MATERI = {
     {
       id: 'prov', no: 6, nama: 'Provinsi', singkat: 'Provinsi',
       pemimpin: 'Gubernur', sapaan: 'Pak Gubernur', emoji: '🧑🏽‍💼', warna: '#8B5CF6',
-      gambarTokoh: 'assets/img/tokoh/gubernur.png', gambarLatar: 'assets/img/latar/provinsi.png',
+      gambarTokoh: 'assets/img/tokoh/gubernur.webp', gambarLatar: 'assets/img/latar/provinsi.webp',
       latar: 'provinsi',
       dialog: [
         { kode: 'prov-1', teks: 'Selamat datang di kantor Gubernur <b>Provinsi {provinsi}</b>, {nama}!' },
@@ -306,14 +306,14 @@ window.MATERI = {
       { teks: 'Pemerintah Provinsi', gambar: 'provinsi', ikon: 'kantor' }
     ],
     situasi: [
-      { ikon: 'kotak', gambar: 'assets/img/situasi/situasi-1.png', teks: 'Keluarga Dina baru pindah rumah. Mereka ingin <b>dicatat sebagai warga baru</b> di lingkungannya. Ke mana mereka melapor pertama kali?', benar: 0, bahas: 'Warga baru melapor dulu ke <b>Ketua RT</b> agar didata.' },
-      { ikon: 'sapu', gambar: 'assets/img/situasi/situasi-2.png', teks: 'Warga satu RT ingin mengadakan <b>kerja bakti</b> membersihkan selokan. Siapa yang mengajak dan mengaturnya?', benar: 0, bahas: '<b>Ketua RT</b> menggerakkan warga untuk bergotong royong.' },
-      { ikon: 'surat', gambar: 'assets/img/situasi/situasi-3.png', teks: 'Pak Budi sudah mendapat surat pengantar dari RT dan RW. Ke mana ia pergi untuk mendapatkan <b>surat keterangan</b>?', benar: 1, bahas: 'Surat keterangan dibuat di <b>kantor desa atau kelurahan</b>.' },
-      { ikon: 'diskusi', gambar: 'assets/img/situasi/situasi-4.png', teks: 'Wakil dari beberapa desa dan kelurahan berkumpul untuk <b>musyawarah perencanaan pembangunan</b>. Di mana musyawarah itu diadakan?', benar: 2, bahas: 'Musrenbang tingkat kecamatan diadakan di <b>kantor kecamatan</b>.' },
-      { ikon: 'sekolah', gambar: 'assets/img/situasi/situasi-5.png', teks: 'Sebuah <b>sekolah dasar</b> membutuhkan perbaikan gedung. Pemerintah mana yang mengurus sekolah dasar?', benar: 3, bahas: 'Sekolah dasar dan SMP diurus oleh <b>pemerintah kabupaten/kota</b> melalui Dinas Pendidikan.' },
-      { ikon: 'ktp', gambar: 'assets/img/situasi/situasi-6.png', teks: 'Warga ingin membuat <b>KTP elektronik</b> dan <b>Kartu Keluarga</b> baru. Siapa yang mencetaknya?', benar: 3, bahas: 'KTP dan KK dicetak oleh <b>Dinas Kependudukan</b> di kabupaten/kota.' },
-      { ikon: 'jalan', gambar: 'assets/img/situasi/situasi-7.png', teks: 'Ada <b>jalan provinsi</b> yang menghubungkan beberapa kabupaten. Siapa yang merawatnya?', benar: 4, bahas: 'Jalan provinsi dirawat oleh <b>pemerintah provinsi</b>.' },
-      { ikon: 'toga', gambar: 'assets/img/situasi/situasi-8.png', teks: 'Pemerintah ingin memperbaiki <b>SMA dan SMK</b> negeri di beberapa kabupaten dan kota. Siapa yang mengurusnya?', benar: 4, bahas: 'SMA, SMK, dan SLB negeri diurus oleh <b>pemerintah provinsi</b>.' }
+      { ikon: 'kotak', gambar: 'assets/img/situasi/situasi-1.webp', teks: 'Keluarga Dina baru pindah rumah. Mereka ingin <b>dicatat sebagai warga baru</b> di lingkungannya. Ke mana mereka melapor pertama kali?', benar: 0, bahas: 'Warga baru melapor dulu ke <b>Ketua RT</b> agar didata.' },
+      { ikon: 'sapu', gambar: 'assets/img/situasi/situasi-2.webp', teks: 'Warga satu RT ingin mengadakan <b>kerja bakti</b> membersihkan selokan. Siapa yang mengajak dan mengaturnya?', benar: 0, bahas: '<b>Ketua RT</b> menggerakkan warga untuk bergotong royong.' },
+      { ikon: 'surat', gambar: 'assets/img/situasi/situasi-3.webp', teks: 'Pak Budi sudah mendapat surat pengantar dari RT dan RW. Ke mana ia pergi untuk mendapatkan <b>surat keterangan</b>?', benar: 1, bahas: 'Surat keterangan dibuat di <b>kantor desa atau kelurahan</b>.' },
+      { ikon: 'diskusi', gambar: 'assets/img/situasi/situasi-4.webp', teks: 'Wakil dari beberapa desa dan kelurahan berkumpul untuk <b>musyawarah perencanaan pembangunan</b>. Di mana musyawarah itu diadakan?', benar: 2, bahas: 'Musrenbang tingkat kecamatan diadakan di <b>kantor kecamatan</b>.' },
+      { ikon: 'sekolah', gambar: 'assets/img/situasi/situasi-5.webp', teks: 'Sebuah <b>sekolah dasar</b> membutuhkan perbaikan gedung. Pemerintah mana yang mengurus sekolah dasar?', benar: 3, bahas: 'Sekolah dasar dan SMP diurus oleh <b>pemerintah kabupaten/kota</b> melalui Dinas Pendidikan.' },
+      { ikon: 'ktp', gambar: 'assets/img/situasi/situasi-6.webp', teks: 'Warga ingin membuat <b>KTP elektronik</b> dan <b>Kartu Keluarga</b> baru. Siapa yang mencetaknya?', benar: 3, bahas: 'KTP dan KK dicetak oleh <b>Dinas Kependudukan</b> di kabupaten/kota.' },
+      { ikon: 'jalan', gambar: 'assets/img/situasi/situasi-7.webp', teks: 'Ada <b>jalan provinsi</b> yang menghubungkan beberapa kabupaten. Siapa yang merawatnya?', benar: 4, bahas: 'Jalan provinsi dirawat oleh <b>pemerintah provinsi</b>.' },
+      { ikon: 'toga', gambar: 'assets/img/situasi/situasi-8.webp', teks: 'Pemerintah ingin memperbaiki <b>SMA dan SMK</b> negeri di beberapa kabupaten dan kota. Siapa yang mengurusnya?', benar: 4, bahas: 'SMA, SMK, dan SLB negeri diurus oleh <b>pemerintah provinsi</b>.' }
     ]
   },
 
